@@ -1,0 +1,3 @@
+<appHome>
+  <home appName="social" appDesc="Social Home" appPng="social_logo.png" appHomeURL="&lt;%= httpRoot %&gt;/social/do?op=Home"/>
+</appHome>
