@@ -774,7 +774,7 @@ changes.add(newData)
 // ******** Done ********
 
 
-def dir = "../Social"
+def dir = "../social"
 
 def extFiles ( theDir, changes ) {
 
@@ -815,21 +815,21 @@ extFiles ( dir, changes )
 //******** Add files ******** 
 //
 def PostingCommentList = new File("./PostingCommentList.jsp").text
-new File("../Social/social-war/src/main/webapp/list/PostingCommentList.jsp").write(PostingCommentList)
+new File("../social/social-war/src/main/webapp/list/PostingCommentList.jsp").write(PostingCommentList)
 
 def CommentAdd = new File("./CommentAdd.jsp").text
-new File("../Social/social-war/src/main/webapp/add/CommentAdd.jsp").write(CommentAdd)
+new File("../social/social-war/src/main/webapp/add/CommentAdd.jsp").write(CommentAdd)
 
 def CommentEdit = new File("./CommentEdit.jsp").text
-new File("../Social/social-war/src/main/webapp/edit/CommentEdit.jsp").write(CommentEdit)
+new File("../social/social-war/src/main/webapp/edit/CommentEdit.jsp").write(CommentEdit)
 
 def PostingAdd = new File("./PostingAdd.jsp").text
-new File("../Social/social-war/src/main/webapp/add/PostingAdd.jsp").write(PostingAdd)
+new File("../social/social-war/src/main/webapp/add/PostingAdd.jsp").write(PostingAdd)
 
 def PostingEdit = new File("./PostingEdit.jsp").text
-new File("../Social/social-war/src/main/webapp/edit/PostingEdit.jsp").write(PostingEdit)
+new File("../social/social-war/src/main/webapp/edit/PostingEdit.jsp").write(PostingEdit)
 
 def src = new File("../social_logo.png").newDataInputStream()
-def dst = new File("../Social/social-war/src/main/webapp/resources/gfx/logo.png").newDataOutputStream()
+def dst = new File("../social/social-war/src/main/webapp/resources/gfx/logo.png").newDataOutputStream()
 dst << src
 
