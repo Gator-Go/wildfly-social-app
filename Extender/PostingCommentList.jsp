@@ -15,7 +15,7 @@ String httpRoot = System.getProperty("com.sw-builder.sync.app.http-root");
 </c:url>
 
 <div class='pojo-section'>
-<div class='pojo-section-header'>Posting Comments</div>
+<div class='pojo-section-header'>Member Comments to Post</div>
 <div class='pojo-section-body'>
 
 <table class="pojo_tablestyle">
