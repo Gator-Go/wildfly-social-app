@@ -46,6 +46,8 @@ String httpRoot = System.getProperty("com.sw-builder.sync.app.http-root");
       <a href='<c:out value="${viewURL}" />'>
         <img src="<%= httpRoot %>/thumbnail/Member/Picture/${item.member.cloudId}-${item.member.pictureVersion}.jpg" alt="Member Picture">
       </a>
+      </br>
+      <strong style="font-size: 13px;"> ${item.member.name} </strong>
     </td>
 
   </tr>

@@ -1,54 +1,57 @@
+# WildFly Builder
 
-# WildFly Social App
+Prototype software factory that generates WildFly / Java EE apps from a shared
+template, metadata, and Groovy extenders.
 
-Prototype. Factory-generated Social app from wildfly-builder.
+Part of the SW-Builder factories for rapid Java EE / WildFly app development.
 
-Catalog: https://sw-builder.com/appstore/wildfly/apps/wildfly-social-app.html
+Catalog: https://sw-builder.com/appstore/builders/apps/wildfly-builder.html
 
-Builder: https://github.com/Gator-Go/wildfly-builder
+## What it does
 
-Live demo: https://sw-builder.com/social/do?op=Home  
-Sign in with `guest` / `guest`.
+`template/` is a base WildFly application framework.
 
-## Build (Unix)
+`build/` holds reusable fragments declared in XML:
 
-Prerequisites: Git, Groovy, JDK, Maven, WildFly.
+- `APP_APPS.xml` — application / module wiring
+- `APP_CODES.xml` — code fragments
+- `APP_EVENT_CODES.xml` — event handlers
+- `APP_FUNCS.xml` — functions
+- `APP_PROCS.xml` — procedures
 
-Expected sibling directories:
+An app-specific extender selects and applies those fragments onto the template.
 
-    ~/wildfly/wildfly-builder
-    ~/wildfly/wildfly-social-app
+Think of a 3D printer: small pieces of code are fused onto the template to
+produce a deployable WildFly app.
 
-```bash
-cd ~/wildfly/wildfly-social-app
-git pull
-./wildfly-social-build-deploy.sh
-```
-## Layout:
+## Layout
+
 ```text
-wildfly-social-app/
-├── wildfly-social-build-deploy.sh
-├── Extender/
-│   ├── SocialExtender.groovy
-│   └── PostingCommentList.jsp
-├── options/
-│   ├── APP_CODE_TYPES.xml
-│   ├── APP_ENUMS.xml
-│   ├── APP_EVENTS.xml
-│   ├── APP_HOME.xml
-│   ├── APP_NAMES.xml
-│   └── APP_TABLES.xml
-└── social_logo.png
+wildfly-builder/
+├── WildFlyBuilder.groovy    # factory entry point
+├── updateAppsList.groovy    # refreshes the known-apps list
+├── update_and_commit.sh     # overlay + commit helper
+├── build/
+│   ├── APP_APPS.xml
+│   ├── APP_CODES.xml
+│   ├── APP_EVENT_CODES.xml
+│   ├── APP_FUNCS.xml
+│   └── APP_PROCS.xml
+└── template/                # base WildFly project
 ```
-## Note:
+## How a build runs
+Build scripts live in each generated app repo, not in this builder.
+Example:
+```text
+~/wildfly/wildfly-booklet-app/wildfly-booklet-build-deploy.sh
+```
+## That script typically:
 
-template/ and build/ appear after a build. They come from wildfly-builder.
+1. Pulls this builder
 
-WildFlyBuilder.groovy, updateAppsList.groovy, and update_and_commit.sh
-are copied in from wildfly-builder at build time.
+2. Overlays template/ and build/ onto the app
 
-SocialExtender.groovy performs functions unique to the social app.
-PostingCommentList.jsp is a social-app extension page.
+3. Runs update_and_commit.sh
 
-The social/ dir appears after a build and is the build output where
-the new app is created.
+4. Runs WildFlyBuilder and an app-specific extender
+(e.g. BookletExtender)
