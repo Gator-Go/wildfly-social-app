@@ -51,6 +51,4 @@ new File("../social_logo.png").withInputStream { src ->
     }
 }
 
-// Copy file
-new File("../social/social-war/src/main/webapp/list/PostingCommentList.jsp")
-    .text = new File("./PostingCommentList.jsp").text
+
